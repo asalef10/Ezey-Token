@@ -5,16 +5,13 @@ import "@openzeppelin/contracts/token/ERC20/~IERC20.sol";
 import "@openzeppelin/contracts/token/ERC20/~ERC20.sol";
 
 contract Token is ERC20 {
-address owner;
-// uint256 balance;
+    address owner;
 
-
-    constructor () ERC20("Token A","A"){
+    constructor (string memory nameToken,string memory symbolToken) ERC20(nameToken,symbolToken){
         owner = msg.sender;
         _mint(address(this), 10 * (10 ** uint256(decimals())));
         mint();
     }
-    
     function mint() public returns (bool) {
         _mint( msg.sender, 100000000000 );
         return true;
