@@ -6,7 +6,7 @@ import "@openzeppelin/contracts/token/ERC20/ERC20.sol";
 
 contract Token is ERC20 {
     address owner;
-
+    
     constructor (string memory nameToken,string memory symbolToken) ERC20(nameToken,symbolToken){
         owner = msg.sender;
         _mint(address(this), 10 * (10 ** uint256(decimals())));
@@ -17,7 +17,7 @@ contract Token is ERC20 {
         return true;
     }
     function getBalance(address balanceAddress)public view returns(uint256 balance){
-        return  IERC20(address(this)).balanceOf(balanceAddress);
+        return IERC20(address(this)).balanceOf(balanceAddress);
     }
 
     function transferToken(address accountTransfer)public{

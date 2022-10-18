@@ -7,9 +7,9 @@ contract("Token", async (accounts) => {
   before(async () => {
     TokenFactoryInstance = await TokenFactory.deployed();
 
-    await TokenFactoryInstance.createToken("TokenA","A");
+    await TokenFactoryInstance.createToken("TokenA", "A");
 
-    let addressContract = await TokenFactoryInstance.getTokenAddress();
+    let addressContract = await TokenFactoryInstance.getTokenAddress("TokenA");
     TokenInstance = await Token.at(addressContract);
   });
 

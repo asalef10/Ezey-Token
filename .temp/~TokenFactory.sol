@@ -7,7 +7,7 @@ import "@openzeppelin/contracts/token/ERC20/~IERC20.sol";
 contract TokenFactory{
   address owner;
 
-    mapping(address=> mapping(string => address))public tokenAddress;
+  mapping(address=> mapping( string => address))internal  tokenAddress;
 
   struct addressList {
     address addressContract;
@@ -23,10 +23,10 @@ contract TokenFactory{
         token = address(new Token(nameToken,symbolToken));
         tokenAddress[msg.sender][nameToken] = token;
     }
-    function getOwner()public view returns(address) {
+    function getOwner()external view returns(address) {
         return owner;
     }
-    function getTokenAddress()public view returns(address){
-      return tokenAddress[msg.sender]["TokenA"];
+    function getTokenAddress(string memory nameToken)external view returns(address addressContract){
+      return addressContract =  tokenAddress[msg.sender][nameToken];
     }
 }
